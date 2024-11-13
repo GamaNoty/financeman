@@ -205,4 +205,16 @@ namespace PersonalFinanceManager
                 Console.WriteLine("Backup file not found.");
             }
         }
+        static void LoadTransactions()
+        {
+            if (File.Exists(CsvFile))
+            {
+                var config = new CsvConfiguration(CultureInfo.InvariantCulture) { HasHeaderRecord = true };
+                using (var reader = new StreamReader(CsvFile))
+                using (var csv = new CsvReader(reader, config))
+                {
+                    transactions = new List<Transaction>(csv.GetRecords<Transaction>());
+                }
+            }
+        }
     }
