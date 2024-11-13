@@ -217,4 +217,13 @@ namespace PersonalFinanceManager
                 }
             }
         }
+        static void SaveTransactions()
+        {
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture) { HasHeaderRecord = true };
+            using (var writer = new StreamWriter(CsvFile))
+            using (var csv = new CsvWriter(writer, config))
+            {
+                csv.WriteRecords(transactions);
+            }
+        }
     }
