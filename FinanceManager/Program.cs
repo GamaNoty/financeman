@@ -169,4 +169,14 @@ namespace PersonalFinanceManager
                 Console.WriteLine("Transaction deleted successfully!\n");
             }
         }
+        static void ListTransactions()
+        {
+            Console.WriteLine("\nTransactions:");
+            for (int i = 0; i < transactions.Count; i++)
+            {
+                var t = transactions[i];
+                Console.WriteLine($"{i + 1}. {t.Type} | Category: {t.Category} | Amount: {t.Amount} | Date: {t.Date:dd-MM-yyyy} | Notes: {t.Notes}");
+            }
+            Console.WriteLine();
+        }
     }
