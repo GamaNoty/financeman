@@ -97,4 +97,16 @@ namespace PersonalFinanceManager
             SaveTransactions();
             Console.WriteLine($"{type} added successfully!\n");
         }
+        static void ViewBalance()
+        {
+            decimal totalIncome = 0, totalExpense = 0;
+            foreach (var t in transactions)
+            {
+                if (t.Type == "Income")
+                    totalIncome += t.Amount;
+                else if (t.Type == "Expense")
+                    totalExpense += t.Amount;
+            }
+            Console.WriteLine($"Your current balance is: {totalIncome - totalExpense}\n");
+        }
     }
