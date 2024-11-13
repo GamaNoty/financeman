@@ -109,4 +109,26 @@ namespace PersonalFinanceManager
             }
             Console.WriteLine($"Your current balance is: {totalIncome - totalExpense}\n");
         }
+        static void GenerateReport()
+        {
+            Console.Write("Enter month and year (mm-yyyy): ");
+            string monthYear = Console.ReadLine();
+            DateTime reportDate = DateTime.ParseExact(monthYear, "MM-yyyy", CultureInfo.InvariantCulture);
+
+            decimal income = 0, expense = 0;
+            foreach (var t in transactions)
+            {
+                if (t.Date.Month == reportDate.Month && t.Date.Year == reportDate.Year)
+                {
+                    if (t.Type == "Income") income += t.Amount;
+                    else if (t.Type == "Expense") expense += t.Amount;
+                }
+            }
+
+            Console.WriteLine($"\nReport for {monthYear}:");
+            Console.WriteLine($"Total Income: {income}");
+            Console.WriteLine($"Total Expense: {expense}");
+            Console.WriteLine($"Balance: {income - expense}\n");
+        }
+
     }
