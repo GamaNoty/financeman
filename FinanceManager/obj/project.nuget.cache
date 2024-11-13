@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Y4xy3Iixg7I=",
+  "dgSpecHash": "Atqwxt07ehU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\adm\\Desktop\\Finance-manager\\FinanceMan\\FinanceMan.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\adm\\Desktop\\Finance-manager\\FinanceManager\\FinanceMan.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\adm\\.nuget\\packages\\csvhelper\\33.0.1\\csvhelper.33.0.1.nupkg.sha512",
+    "C:\\Users\\adm\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
