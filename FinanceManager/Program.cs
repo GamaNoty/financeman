@@ -130,5 +130,30 @@ namespace PersonalFinanceManager
             Console.WriteLine($"Total Expense: {expense}");
             Console.WriteLine($"Balance: {income - expense}\n");
         }
+        static void EditTransaction()
+        {
+            ListTransactions();
+            Console.Write("Select transaction number to edit: ");
+            int index = int.Parse(Console.ReadLine()) - 1;
+            Transaction transaction = transactions[index];
 
+            Console.Write("Enter new amount (leave empty to keep current): ");
+            string newAmount = Console.ReadLine();
+            if (!string.IsNullOrEmpty(newAmount)) transaction.Amount = decimal.Parse(newAmount);
+
+            Console.Write("Enter new category (leave empty to keep current): ");
+            string newCategory = Console.ReadLine();
+            if (!string.IsNullOrEmpty(newCategory)) transaction.Category = newCategory;
+
+            Console.Write("Enter new date (dd-mm-yyyy, leave empty to keep current): ");
+            string newDate = Console.ReadLine();
+            if (!string.IsNullOrEmpty(newDate)) transaction.Date = DateTime.ParseExact(newDate, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+
+            Console.Write("Enter new notes (leave empty to keep current): ");
+            string newNotes = Console.ReadLine();
+            if (!string.IsNullOrEmpty(newNotes)) transaction.Notes = newNotes;
+
+            SaveTransactions();
+            Console.WriteLine("Transaction edited successfully!\n");
+        }
     }
