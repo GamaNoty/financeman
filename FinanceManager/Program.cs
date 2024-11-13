@@ -156,4 +156,17 @@ namespace PersonalFinanceManager
             SaveTransactions();
             Console.WriteLine("Transaction edited successfully!\n");
         }
+        static void DeleteTransaction()
+        {
+            ListTransactions();
+            Console.Write("Select transaction number to delete: ");
+            int index = int.Parse(Console.ReadLine()) - 1;
+            Console.Write("Are you sure you want to delete this transaction? (yes/no): ");
+            if (Console.ReadLine().ToLower() == "yes")
+            {
+                transactions.RemoveAt(index);
+                SaveTransactions();
+                Console.WriteLine("Transaction deleted successfully!\n");
+            }
+        }
     }
