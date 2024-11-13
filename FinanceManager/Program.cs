@@ -70,6 +70,31 @@ namespace PersonalFinanceManager
                         Console.WriteLine("Invalid option. Please select a valid option.\n");
                         break;
                 }
+
             }
+        }
+        static void AddTransaction(string type)
+        {
+            Console.Write("Enter amount: ");
+            decimal amount = decimal.Parse(Console.ReadLine());
+            Console.Write("Enter category: ");
+            string category = Console.ReadLine();
+            Console.Write("Enter date (dd-mm-yyyy): ");
+            DateTime date = DateTime.ParseExact(Console.ReadLine(), "dd-MM-yyyy", CultureInfo.InvariantCulture);
+            Console.Write("Notes (optional): ");
+            string notes = Console.ReadLine();
+
+            Transaction transaction = new Transaction
+            {
+                Type = type,
+                Amount = amount,
+                Category = category,
+                Date = date,
+                Notes = notes
+            };
+
+            transactions.Add(transaction);
+            SaveTransactions();
+            Console.WriteLine($"{type} added successfully!\n");
         }
     }
