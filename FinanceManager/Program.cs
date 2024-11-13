@@ -179,4 +179,14 @@ namespace PersonalFinanceManager
             }
             Console.WriteLine();
         }
+        static void BackupData()
+        {
+            using (StreamWriter file = File.CreateText("backup_data.json"))
+            {
+                var json = Newtonsoft.Json.JsonConvert.SerializeObject(transactions, Newtonsoft.Json.Formatting.Indented);
+                file.Write(json);
+            }
+            Console.WriteLine("Data backed up successfully!");
+        }
+
     }
