@@ -188,5 +188,21 @@ namespace PersonalFinanceManager
             }
             Console.WriteLine("Data backed up successfully!");
         }
-
+        static void RestoreData()
+        {
+            if (File.Exists("backup_data.json"))
+            {
+                using (StreamReader file = File.OpenText("backup_data.json"))
+                {
+                    var json = file.ReadToEnd();
+                    transactions = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Transaction>>(json);
+                }
+                SaveTransactions();
+                Console.WriteLine("Data restored successfully!");
+            }
+            else
+            {
+                Console.WriteLine("Backup file not found.");
+            }
+        }
     }
